@@ -1,0 +1,2904 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>DH Benelux 2026 - Participants Location</title>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"
+    />
+
+    <meta
+      name="viewport"
+      content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <style>
+      #map_cad7431c337c29068d28a2c60f72ac0f {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0%;
+        top: 0%;
+      }
+      .leaflet-container {
+        font-size: 1rem;
+      }
+    </style>
+
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+
+    <style>
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      }
+    </style>
+
+    <script>
+      L_NO_TOUCH = false;
+      L_DISABLE_3D = false;
+    </script>
+  </head>
+  <body>
+    <div class="folium-map" id="map_cad7431c337c29068d28a2c60f72ac0f"></div>
+  </body>
+  <script>
+    var map_cad7431c337c29068d28a2c60f72ac0f = L.map(
+      "map_cad7431c337c29068d28a2c60f72ac0f",
+      {
+        center: [49.8, 6.1],
+        crs: L.CRS.EPSG3857,
+        ...{
+          zoom: 5,
+          zoomControl: true,
+          preferCanvas: false,
+        },
+      },
+    );
+    L.control.scale().addTo(map_cad7431c337c29068d28a2c60f72ac0f);
+
+    var tile_layer_f44c7a8c0a134bfec747bd2811c67c6c = L.tileLayer(
+      "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+      {
+        minZoom: 0,
+        maxZoom: 19,
+        maxNativeZoom: 19,
+        noWrap: false,
+        attribution:
+          '\u0026copy; \u003ca href="https://www.openstreetmap.org/copyright"\u003eOpenStreetMap\u003c/a\u003e contributors',
+        subdomains: "abc",
+        detectRetina: false,
+        tms: false,
+        opacity: 1,
+      },
+    );
+
+    tile_layer_f44c7a8c0a134bfec747bd2811c67c6c.addTo(
+      map_cad7431c337c29068d28a2c60f72ac0f,
+    );
+
+    function geo_json_4d00290282b60410ab90006c956b7f1a_onEachFeature(
+      feature,
+      layer,
+    ) {
+      (function (feature, layer) {
+        let popupBody = "<span style='font-size: 1.5em;'>";
+        popupBody +=
+          "<span style='color: red; width: 20px; display: inline-block;'><svg xmlns='http://www.w3.org/2000/svg' style='vertical-align: top;' viewBox='0 0 16 16' fill='currentColor' class='size-4'><path fill-rule='evenodd' d='M3 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H3Zm2.5 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM10 5.75a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75Zm.75 3.75a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5ZM10 8a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 0 1.5h-1.5A.75.75 0 0 1 10 8Zm-2.378 3c.346 0 .583-.343.395-.633A2.998 2.998 0 0 0 5.5 9a2.998 2.998 0 0 0-2.517 1.367c-.188.29.05.633.395.633h4.244Z' clip-rule='evenodd' /></svg></span>";
+        popupBody += " " + feature.properties.Name + "</span><br>";
+
+        if (feature.properties.Affiliation) {
+          popupBody += "<i>" + feature.properties.Affiliation + "</i></br>";
+        }
+        if (feature.properties.Affiliation_Country) {
+          popupBody += "(" + feature.properties.Affiliation_Country + ")</br>";
+        }
+        if (feature.properties.Submission_1_text) {
+          popupBody +=
+            "<div style='color: green; width: 20px;'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor' class='size-5'><path fill-rule='evenodd' d='M1 2.75A.75.75 0 0 1 1.75 2h16.5a.75.75 0 0 1 0 1.5H18v8.75A2.75 2.75 0 0 1 15.25 15h-1.072l.798 3.06a.75.75 0 0 1-1.452.38L13.41 18H6.59l-.114.44a.75.75 0 0 1-1.452-.38L5.823 15H4.75A2.75 2.75 0 0 1 2 12.25V3.5h-.25A.75.75 0 0 1 1 2.75ZM7.373 15l-.391 1.5h6.037l-.392-1.5H7.373ZM13.25 5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0v-5.5a.75.75 0 0 1 .75-.75Zm-6.5 4a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 6.75 9Zm4-1.25a.75.75 0 0 0-1.5 0v3.5a.75.75 0 0 0 1.5 0v-3.5Z' clip-rule='evenodd' /></svg></div>";
+        }
+        if (feature.properties.Submission_1_text) {
+          popupBody +=
+            "<ul><li>" + feature.properties.Submission_1_text + "</i>";
+        }
+        if (feature.properties.Submission_2_text) {
+          popupBody += "<li>" + feature.properties.Submission_2_text + "</i>";
+        }
+        if (feature.properties.Submission_3_text) {
+          popupBody += "<li>" + feature.properties.Submission_3_text + "</i>";
+        }
+        if (feature.properties.Submission_1_text) {
+          popupBody += "</ul>";
+        }
+
+        layer.bindPopup(popupBody);
+      })(feature, layer);
+
+      layer.on({});
+    }
+    var geo_json_4d00290282b60410ab90006c956b7f1a = L.geoJson(null, {
+      onEachFeature: geo_json_4d00290282b60410ab90006c956b7f1a_onEachFeature,
+
+      ...{},
+    });
+
+    function geo_json_4d00290282b60410ab90006c956b7f1a_add(data) {
+      geo_json_4d00290282b60410ab90006c956b7f1a.addData(data);
+    }
+    geo_json_4d00290282b60410ab90006c956b7f1a_add({
+      features: [
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "Leiden University Libraries",
+            Affiliation_Country: "Netherlands",
+            Name: "Femmy Admiraal",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [78.348547, 17.4454957], type: "Point" },
+          properties: {
+            Affiliation:
+              "International Institute of Information Technology, Hyderabad",
+            Affiliation_Country: "India",
+            Name: "Kushang Agarwal",
+            Submission_1_text:
+              "Safe Spaces and Unsafe Designs : A Mixed-Methods Study of Queer User Experiences on Grindr in India",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.13, 49.61167], type: "Point" },
+          properties: {
+            Affiliation:
+              "Luxembourg Centre for Contemporary and Digital History, University of Luxembourg",
+            Affiliation_Country: "Luxembourg",
+            Name: "Mehrdad Almasi",
+            Submission_1_text:
+              "Rewriting the Past for the Present: A Computational Study of Sitcom Presentism using Fine-Tuned Language Models",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [12.83333, 42.83333], type: "Point" },
+          properties: {
+            Affiliation: "I Tatti / Harvard University",
+            Affiliation_Country: "Italy",
+            Name: "Dressen Angela",
+            Submission_1_text:
+              "Lost in digitalization? Using data as a source for quantitative art history",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [2.2640299, 48.8475401], type: "Point" },
+          properties: {
+            Affiliation: "CNRS",
+            Affiliation_Country: "France",
+            Name: "C\u00e9cile ARMAND",
+            Submission_1_text:
+              "Introduction to HistText: An Application for Exploring Multilingual Text Corpora",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [-0.2636267, 52.5872244], type: "Point" },
+          properties: {
+            Affiliation: "University of Cambridge",
+            Affiliation_Country: "United Kingdom",
+            Name: "Miguel Arrais Pacheco",
+            Submission_1_text:
+              "The Queer Art of Interpellation: Danielle Brathwaite-Shirley and Gabriel Massan\u2019s Digital Video Games",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.1231525, 52.0906639], type: "Point" },
+          properties: {
+            Affiliation: "Universiteit Utrecht",
+            Affiliation_Country: "Netherlands",
+            Name: "Tijmen Baarda",
+            Submission_1_text:
+              "A virtual research environment for collaborative querying, collecting and annotating works of European popular print",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [-1.4239975, 50.9617568], type: "Point" },
+          properties: {
+            Affiliation: "University of Southampton",
+            Affiliation_Country: "United Kingdom",
+            Name: "James Baker",
+            Submission_1_text:
+              "Catalogues-as-data: practice, principles, and prospects",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "Vrije Universiteit Amsterdam Student",
+            Affiliation_Country: "Netherlands",
+            Name: "Feruza Bakhtiyorova",
+            Submission_1_text:
+              "Workforce Imbalance and Structural Decline: A Data-Driven Analysis of the Dutch East India Company (1700-1780)",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.8634329, 51.8215173], type: "Point" },
+          properties: {
+            Affiliation: "Radboud university Nijmegen",
+            Affiliation_Country: "Netherlands",
+            Name: "Bram Bakker",
+            Submission_1_text:
+              "Explainable entity matching for library metadata",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "Huygens Institute",
+            Affiliation_Country: "Netherlands",
+            Name: "Lotte Baltussen",
+            Submission_1_text:
+              "Building a Shared Data Catalogue: User Research and Conceptual Considerations",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [10.2026177, 56.1670905], type: "Point" },
+          properties: {
+            Affiliation: "Aarhus University",
+            Affiliation_Country: "Denmark",
+            Name: "Marc Barcelos",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.6859518, 50.8472117], type: "Point" },
+          properties: {
+            Affiliation: "Maastricht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Monika Barget",
+            Submission_1_text: "Academic storystelling with enriched hypertext",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [10.5, 51.5], type: "Point" },
+          properties: {
+            Affiliation:
+              "Leibniz Institute of European History (IEG) | DH Lab, Germany",
+            Affiliation_Country: "Germany",
+            Name: "Sofia Baroncini",
+            Submission_1_text:
+              "Creating Authentic Stories in a Cultural Heritage Knowledge Architecture: Modeling 3D reconstructions, replicas andrestorations of the Chest of Distress of Maastricht",
+            Submission_2_text:
+              "Lost in digitalization? Using data as a source for quantitative art history",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [-6.2544278, 53.3437061], type: "Point" },
+          properties: {
+            Affiliation: "Trinity College Dublin",
+            Affiliation_Country: "Ireland",
+            Name: "Nicole Basaraba",
+            Submission_1_text:
+              "Narrative mapping of historical data: Tracing known locations of the Legendary 18th Century Bokkenrijders inLimburg",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [8.4932878, 52.0376828], type: "Point" },
+          properties: {
+            Affiliation: "Bielefeld University",
+            Affiliation_Country: "Germany",
+            Name: "Milena Belosevic",
+            Submission_1_text:
+              "Narrative construction of \u201cAI\u201d through anthropomorphising language in German public discourse",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.4597028, 52.1686355], type: "Point" },
+          properties: {
+            Affiliation: "Leiden University",
+            Affiliation_Country: "Netherlands",
+            Name: "Martin Berger",
+            Submission_1_text:
+              "Demonstration: Digital tools for large-scale provenance research in museum databases",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "KNAW DHLab",
+            Affiliation_Country: "Netherlands",
+            Name: "Gauri Bhagwat",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.5, 50.75], type: "Point" },
+          properties: {
+            Affiliation: "FedOSC (Federal Open Science Cloud, BE)",
+            Affiliation_Country: "Belgium",
+            Name: "Judith Biernaux",
+            Submission_1_text:
+              "Engaging the GLAM Sector in a Federal Open Science Ecosystem: The Belgian FedOSC Approach",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.5, 50.75], type: "Point" },
+          properties: {
+            Affiliation: "Ghent University \u0026 KBR",
+            Affiliation_Country: "Belgium",
+            Name: "Julie M. Birkholz",
+            Submission_1_text:
+              "CLARIAH-VL+: paving the way for a SSH Open Science Cloud for Flanders",
+            Submission_2_text:
+              "From vellum to virtual: manuscripts keep telling stories",
+            Submission_3_text:
+              "Tracing Connections: The Ego-Network of the Painter Fran\u00e7ois-Joseph Navez",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "Huygens Institute / DHLab",
+            Affiliation_Country: "Netherlands",
+            Name: "Elli Bleeker",
+            Submission_1_text:
+              "Developing a Taxonomy for Textual Variation: the VIDIT Research Initiative",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [3.2915374, 50.8057129], type: "Point" },
+          properties: {
+            Affiliation: "KU Leuven",
+            Affiliation_Country: "Belgium",
+            Name: "Valeria Irene Boano",
+            Submission_1_text:
+              "Pliny\u2019s \u201cWall of Fame\u201d: A Digital Semantic Approach to Citations and Character Networks in Books 2-6 of theNaturalis Historia",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.6859518, 50.8472117], type: "Point" },
+          properties: {
+            Affiliation: "Maastricht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Stefan Bos",
+            Submission_1_text:
+              "How Virtual Reality changes empathic storytelling: A mixed-methods analysis of memory, language, and behavior",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.1801005, 52.0870179], type: "Point" },
+          properties: {
+            Affiliation: "Utrecht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Jill Briggeman",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "OMRON Electronics BV",
+            Affiliation_Country: "Netherlands",
+            Name: "Nina Buchina",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.3954969, 50.8225504], type: "Point" },
+          properties: {
+            Affiliation: "Vrije Universiteit Brussel",
+            Affiliation_Country: "Belgium",
+            Name: "Sara Budts",
+            Submission_1_text:
+              "Using transformer models to analyze orthographic variation in Late Modern Dutch witness depositions",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.6859518, 50.8472117], type: "Point" },
+          properties: {
+            Affiliation: "Maastricht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Felix Bui",
+            Submission_1_text:
+              "Critical Making: Telling Stories through World-Building in Digital Humanities Pedagogy",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.92826, 50.9282], type: "Point" },
+          properties: {
+            Affiliation:
+              "Cologne Center for eHumanities, University of Cologne",
+            Affiliation_Country: "Germany",
+            Name: "Hannah Busch",
+            Submission_1_text: "(Re-)telling 12th century papal history",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.13, 49.61167], type: "Point" },
+          properties: {
+            Affiliation: "C2DH University of Luxembourg",
+            Affiliation_Country: "Luxembourg",
+            Name: "Vy Cao",
+            Submission_1_text:
+              "Impresso Datalab: Embedding Newspapers and Radio archives for multimodal and multilingual data analysis",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [3.125956, 50.6285707], type: "Point" },
+          properties: {
+            Affiliation: "Universit\u00e9 de Lille",
+            Affiliation_Country: "France",
+            Name: "Carmen Carrasco Lujan",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [-0.1330007, 51.524203], type: "Point" },
+          properties: {
+            Affiliation: "University College London",
+            Affiliation_Country: "United Kingdom",
+            Name: "Noah Chapman",
+            Submission_1_text:
+              "Addressing Concerns in Mongolian Public Archaeology through Educational Game Design",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.9487155, 49.5036259], type: "Point" },
+          properties: {
+            Affiliation: "University of Luxembourg",
+            Affiliation_Country: "Luxembourg",
+            Name: "Ellen Charlesworth",
+            Submission_1_text:
+              "Evidence of what exactly? Questioning the use of neural networks to create evidence within research narratives",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "KB, National Library of the Netherlands",
+            Affiliation_Country: "Netherlands",
+            Name: "Steven Claeyssens",
+            Submission_1_text:
+              "Catalogues-as-data: practice, principles, and prospects",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.13, 49.61167], type: "Point" },
+          properties: {
+            Affiliation: "C2DH - University of Luxembourg",
+            Affiliation_Country: "Luxembourg",
+            Name: "Fr\u00e9d\u00e9ric Clavert",
+            Submission_1_text:
+              "From reproducibility to re-enactment, a new life for scientific Articles",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [-82.4385258, 34.9257744], type: "Point" },
+          properties: {
+            Affiliation: "Furman University",
+            Affiliation_Country: "United States",
+            Name: "Cian Colgan",
+            Submission_1_text:
+              "Tracking the Ten Thousand: Using GIS to Conceptualize Spatial Narrative in Xenophon\u0027s Anabasis",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [3.7108831, 51.0078485], type: "Point" },
+          properties: {
+            Affiliation: "University of Gent",
+            Affiliation_Country: "Belgium",
+            Name: "Fiammetta Comelli",
+            Submission_1_text:
+              "Untangling hagiographic entanglements: from Textual Annotation, Named Entity Recognition to Database",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.86746, 50.4669], type: "Point" },
+          properties: {
+            Affiliation: "University of Namur",
+            Affiliation_Country: "Belgium",
+            Name: "Ad\u00e9la\u00efde Couplet",
+            Submission_1_text: "Sign Languages and Gesture Recogniton",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.5, 50.75], type: "Point" },
+          properties: {
+            Affiliation: "UGent - History Program",
+            Affiliation_Country: "Belgium",
+            Name: "Dietlind Rozekin Craenhals",
+            Submission_1_text:
+              "Mapathons \u2013 plotting history through collaborative georeferencing.",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.4199387, 51.1843856], type: "Point" },
+          properties: {
+            Affiliation: "University of Antwerp",
+            Affiliation_Country: "Belgium",
+            Name: "Godfried Croenen",
+            Submission_1_text:
+              "The Hand of Antwerp: A Dataset of Middle Dutch Deeds (1300-1355) connected to Jan van Boendale",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.5, 50.75], type: "Point" },
+          properties: {
+            Affiliation: "UGent - Ghent Centre for Digital Humanities",
+            Affiliation_Country: "Belgium",
+            Name: "Fien Danniau",
+            Submission_1_text:
+              "Mapathons \u2013 plotting history through collaborative georeferencing.",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.8898042, 52.3681334], type: "Point" },
+          properties: {
+            Affiliation: "Universiteit van Amsterdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Jelmer Datema",
+            Submission_1_text:
+              "The playlist pipeline: Reconstructing the historical music programming of the Indonesian programme of RadioNetherlands Wereldomroep",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.8651882, 52.3340539], type: "Point" },
+          properties: {
+            Affiliation: "Vrije Universiteit Amsterdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Victor de Boer",
+            Submission_1_text: "An Ontology for Traditional Knowledge Labels",
+            Submission_2_text:
+              "Towards Polyvocal Metadata Collection for Colonial Collections: a Pilot Study in Kuching, Malaysia",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [3.2915374, 50.8057129], type: "Point" },
+          properties: {
+            Affiliation: "KU Leuven",
+            Affiliation_Country: "Belgium",
+            Name: "Evelien de Graaf",
+            Submission_1_text:
+              "Reconstructing Ancient Networks: Integrating Corpus Analysis with Wikidata",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "KB National Library of the Netherlands",
+            Affiliation_Country: "Netherlands",
+            Name: "Michel de Gruijter",
+            Submission_1_text:
+              "HAICu\u2019s Innovation Labs: Bridging Technology and Heritage through Collaborative Problem-Solving",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.3812357, 50.8134719], type: "Point" },
+          properties: {
+            Affiliation: "Universit\u00e9 libre de Bruxelles",
+            Affiliation_Country: "Belgium",
+            Name: "S\u00e9bastien de Valeriola",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [3.7108831, 51.0078485], type: "Point" },
+          properties: {
+            Affiliation: "Ghent University",
+            Affiliation_Country: "Belgium",
+            Name: "Tess Dejaeghere",
+            Submission_1_text:
+              "The Case of RedressHub: An LLM-Assisted Pipeline for Mapping Colonial Redress Initiatives in Belgium",
+            Submission_2_text:
+              "CLARIAH-VL+: paving the way for a SSH Open Science Cloud for Flanders",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [33.413932, 35.1439124], type: "Point" },
+          properties: {
+            Affiliation: "University of Cyprus",
+            Affiliation_Country: "Cyprus",
+            Name: "Federica Di Biase",
+            Submission_1_text:
+              "Storytellers by Design: Critical Approaches to Curating Research-Driven Digital Experiences Using Design Methods",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.9281305, 50.9280445], type: "Point" },
+          properties: {
+            Affiliation: "University of Cologne",
+            Affiliation_Country: "Germany",
+            Name: "Sviatoslav Drach",
+            Submission_1_text:
+              "Presenting research in an engaging way: digital exhibitions as a sustainable publication format",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [3.7108831, 51.0078485], type: "Point" },
+          properties: {
+            Affiliation: "Universiteit Gent",
+            Affiliation_Country: "Belgium",
+            Name: "Vincent Ducatteeuw",
+            Submission_1_text: "Narrating Belgian Business History",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.13, 49.61167], type: "Point" },
+          properties: {
+            Affiliation: "C2DH University of Luxembourg",
+            Affiliation_Country: "Luxembourg",
+            Name: "Marten During",
+            Submission_1_text:
+              "Impresso Datalab: Embedding Newspapers and Radio archives for multimodal and multilingual data analysis",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "DANS - KNAW",
+            Affiliation_Country: "Netherlands",
+            Name: "Nicole Emmenegger",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [10.20158, 56.16888], type: "Point" },
+          properties: {
+            Affiliation: "Center for Humanities Computing, Aarhus University",
+            Affiliation_Country: "Denmark",
+            Name: "Rie Eriksen",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.5, 50.75], type: "Point" },
+          properties: {
+            Affiliation: "MIT/UCLouvain",
+            Affiliation_Country: "Belgium",
+            Name: "Louis Escouflaire",
+            Submission_1_text:
+              "Unsmurfed: How an LLM Interprets the Smurfs\u2019 Distributional Language",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "Huygens Institute / Meertens Institute",
+            Affiliation_Country: "Netherlands",
+            Name: "Maria Eskevich",
+            Submission_1_text: "Telling the story of a dataset",
+            Submission_2_text:
+              "Building a Shared Data Catalogue: User Research and Conceptual Considerations",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [3.7108831, 51.0078485], type: "Point" },
+          properties: {
+            Affiliation: "Ghent University",
+            Affiliation_Country: "Belgium",
+            Name: "Elke Evrard",
+            Submission_1_text:
+              "The Case of RedressHub: An LLM-Assisted Pipeline for Mapping Colonial Redress Initiatives in Belgium",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.5, 50.75], type: "Point" },
+          properties: {
+            Affiliation: "IDLab - Imec, Ghent University",
+            Affiliation_Country: "Belgium",
+            Name: "Fei Fei",
+            Submission_1_text:
+              "Reading the Landscape: Data Extraction Using Computer Vision for the Artemis Project",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [8.9266707, 44.4148861], type: "Point" },
+          properties: {
+            Affiliation: "University of Genoa",
+            Affiliation_Country: "Italy",
+            Name: "Federico Filippi Pr\u00e9vost de Bord",
+            Submission_1_text:
+              "From Notes to Nodes: Interactive Modeling and Visualization of Bertini\u2019s Dictionary of Musicians (1814)",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.1801005, 52.0870179], type: "Point" },
+          properties: {
+            Affiliation: "Utrecht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Arja Firet",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.4199387, 51.1843856], type: "Point" },
+          properties: {
+            Affiliation: "University of Antwerp",
+            Affiliation_Country: "Belgium",
+            Name: "Marika Fox",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "Huygens Instituut",
+            Affiliation_Country: "Netherlands",
+            Name: "Bente Frissen",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.8923905, 52.36456], type: "Point" },
+          properties: {
+            Affiliation: "Stadsarchief Amsterdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Merel Geerlings",
+            Submission_1_text: "Telling the story of a dataset",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [3.2915374, 50.8057129], type: "Point" },
+          properties: {
+            Affiliation: "KU Leuven",
+            Affiliation_Country: "Belgium",
+            Name: "Tom Gheldof",
+            Submission_1_text:
+              "CLARIAH-VL+: paving the way for a SSH Open Science Cloud for Flanders",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.4597028, 52.1686355], type: "Point" },
+          properties: {
+            Affiliation: "Leiden University",
+            Affiliation_Country: "Netherlands",
+            Name: "Aida Gholami",
+            Submission_1_text:
+              "Scene-Anchored Analysis of Affective \u201cStickiness\u201d in Nordic Political-Thriller Television with Large Language Models",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [11.0176956, 49.6015013], type: "Point" },
+          properties: {
+            Affiliation: "FAU Erlangen N\u00fcrnberg",
+            Affiliation_Country: "Germany",
+            Name: "Anastasia Glawion",
+            Submission_1_text:
+              "Interactive storytelling in Fandom: Fanfiction as Electronic Literature",
+            Submission_2_text:
+              "Workshop: Problems and Prospects of Computational Fanfiction Research",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.1801005, 52.0870179], type: "Point" },
+          properties: {
+            Affiliation: "Utrecht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Julian Gonggrijp",
+            Submission_1_text:
+              "A virtual research environment for collaborative querying, collecting and annotating works of European popular print",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.56667, 53.21917], type: "Point" },
+          properties: {
+            Affiliation:
+              "UNAM (National Autonomous University of Mexico)/University of Groningen",
+            Affiliation_Country: "Netherlands",
+            Name: "Carolina Gordillo Alor",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.9487155, 49.5036259], type: "Point" },
+          properties: {
+            Affiliation: "University of Luxembourg",
+            Affiliation_Country: "Luxembourg",
+            Name: "Elisabeth Guerard",
+            Submission_1_text:
+              "From reproducibility to re-enactment, a new life for scientific Articles",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.9487155, 49.5036259], type: "Point" },
+          properties: {
+            Affiliation: "University of Luxembourg",
+            Affiliation_Country: "Luxembourg",
+            Name: "Daniele Guido",
+            Submission_1_text:
+              "A renaissance of 3D for Cultural Heritage: scrolly-telling websites with our 3D Stories Framework",
+            Submission_2_text:
+              "From reproducibility to re-enactment, a new life for scientific Articles",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [10.5, 51.5], type: "Point" },
+          properties: {
+            Affiliation: "German Maritime Museum / Gerda Henkel Foundation",
+            Affiliation_Country: "Germany",
+            Name: "Lucas Haasis",
+            Submission_1_text:
+              "From Postbag to Portal: Digital Storytelling with Convict Letters from HMS Calcutta 1803",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [2.0, 46.0], type: "Point" },
+          properties: {
+            Affiliation: "Aix-Marseille University",
+            Affiliation_Country: "France",
+            Name: "Christian Henriot",
+            Submission_1_text:
+              "Introduction to HistText: An Application for Exploring Multilingual Text Corpora",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.7168444, 50.8351542], type: "Point" },
+          properties: {
+            Affiliation: "Maastricht University Library",
+            Affiliation_Country: "Netherlands",
+            Name: "Pedro Hernandez Serrano",
+            Submission_1_text:
+              "Applying Data Infrastructure Maturity Profile to Digital Humanities",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.4597028, 52.1686355], type: "Point" },
+          properties: {
+            Affiliation: "Leiden University",
+            Affiliation_Country: "Netherlands",
+            Name: "Anne Heyer",
+            Submission_1_text:
+              "Using Large Language Models to understand \u2018the masses\u2019 in nineteenth-century Dutch newspapers",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [7.58403, 47.55832], type: "Point" },
+          properties: {
+            Affiliation: "RISE, University of Basel",
+            Affiliation_Country: "Switzerland",
+            Name: "Maximilian Hindermann",
+            Submission_1_text:
+              "The Anonymous Humanities Data Benchmark: Evaluation as Epistemic Practice",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "DHLab/Huygens Instituut KNAW",
+            Affiliation_Country: "Netherlands",
+            Name: "Rik Hoekstra",
+            Submission_1_text:
+              "Beyond Numerical Dominance: Presence, Influence and Strategic Behaviour in the Dutch States-General (1626\u20131630)",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.959474, 50.8779457], type: "Point" },
+          properties: {
+            Affiliation: "Open Universiteit",
+            Affiliation_Country: "Netherlands",
+            Name: "Susan Hogervorst",
+            Submission_1_text:
+              "From Interview to Archive (or Not): Dilemmas in Participatory Oral History",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.8651882, 52.3340539], type: "Point" },
+          properties: {
+            Affiliation: "Vrije Universiteit Amsterdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Gabriel Hoogerwerf",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.6859518, 50.8472117], type: "Point" },
+          properties: {
+            Affiliation: "Maastricht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Melisse Houbrechts",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "Huygens Institute, KNAW",
+            Affiliation_Country: "Netherlands",
+            Name: "Juliette Huygen",
+            Submission_1_text:
+              "Building a Shared Data Catalogue: User Research and Conceptual Considerations",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [11.354457, 44.4982886], type: "Point" },
+          properties: {
+            Affiliation: "University of Bologna",
+            Affiliation_Country: "Italy",
+            Name: "Maria Ionita",
+            Submission_1_text:
+              "From Missionary Records to Data Narratives: Reconstructing the Histories of Tamil Religious Objects (1706\u20131741)",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.4597028, 52.1686355], type: "Point" },
+          properties: {
+            Affiliation: "leiden university",
+            Affiliation_Country: "Netherlands",
+            Name: "Ishak Ishak",
+            Submission_1_text:
+              "Demonstration: Digital tools for large-scale provenance research in museum databases",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [10.20158, 56.16888], type: "Point" },
+          properties: {
+            Affiliation:
+              "Department of Linguistics and Cognitive Science, Aarhus University",
+            Affiliation_Country: "Denmark",
+            Name: "Mia Jacobsen",
+            Submission_1_text:
+              "Blood and gore: The prevalence of violence in fanfiction across gender categories and engagement",
+            Submission_2_text:
+              "Workshop: Problems and Prospects of Computational Fanfiction Research",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.3812357, 50.8134719], type: "Point" },
+          properties: {
+            Affiliation: "Universit\u00e9 Libre de Bruxelles",
+            Affiliation_Country: "Belgium",
+            Name: "Alexandra Jaumoulle",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [-0.0715902, 51.5061905], type: "Point" },
+          properties: {
+            Affiliation: "Northeastern University London",
+            Affiliation_Country: "United Kingdom",
+            Name: "Odile Jordan",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [23.71622, 37.97945], type: "Point" },
+          properties: {
+            Affiliation: "Time Heritage Athens",
+            Affiliation_Country: "Greece",
+            Name: "Afroditi Kamara",
+            Submission_1_text:
+              "Digital storytelling for urban and rural heritage interpretation",
+            Submission_2_text:
+              "From Memory to Multimodal Storytelling: Digitally Narrating Asia Minor Urban Culture at ESTIA Neas Smyrnis",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [22.0, 39.0], type: "Point" },
+          properties: {
+            Affiliation: 'PRESIDENT "ESTIA NEAS SMYRNIS"',
+            Affiliation_Country: "Greece",
+            Name: "TASOULA KAPSI",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.9487155, 49.5036259], type: "Point" },
+          properties: {
+            Affiliation: "University of Luxembourg",
+            Affiliation_Country: "Luxembourg",
+            Name: "Tugce Karatas",
+            Submission_1_text:
+              "Rewriting the Past for the Present: A Computational Study of Sitcom Presentism using Fine-Tuned Language Models",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "KNAW Meertens Instituut",
+            Affiliation_Country: "Netherlands",
+            Name: "Folgert Karsdorp",
+            Submission_1_text:
+              "Lost in digitalization? Using data as a source for quantitative art history",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.13, 49.61167], type: "Point" },
+          properties: {
+            Affiliation: "MNAHA Luxembourg",
+            Affiliation_Country: "Luxembourg",
+            Name: "Marc Kaysen",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.4199387, 51.1843856], type: "Point" },
+          properties: {
+            Affiliation: "University of Antwerp",
+            Affiliation_Country: "Belgium",
+            Name: "Mike Kestemont",
+            Submission_1_text:
+              "The Hand of Antwerp: A Dataset of Middle Dutch Deeds (1300-1355) connected to Jan van Boendale",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.8651882, 52.3340539], type: "Point" },
+          properties: {
+            Affiliation: "VU Amsterdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Mateusz Kielan",
+            Submission_1_text:
+              "Bridging the Gap Between Tabular and Linked Data: Designing an Intelligent Conversion Tool for Digital Humanities",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [8.47955, 49.49671], type: "Point" },
+          properties: {
+            Affiliation: "Technical University of Applied Sciences Mannheim",
+            Affiliation_Country: "Germany",
+            Name: "Martin Kim",
+            Submission_1_text:
+              "The Koan Asklepieion \u2013 An Alternative Story: Approaching Healing Rituals by Serious Gaming",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [10.0, 56.0], type: "Point" },
+          properties: {
+            Affiliation: "Aarhus University, Center for Humanities Computing",
+            Affiliation_Country: "Denmark",
+            Name: "Marta Kipke",
+            Submission_1_text:
+              "The Narrative of National Romanticism in 19th Century Painting: The Danish Golden Age and Beyond",
+            Submission_2_text:
+              "Corsaren: Multimodal Storytelling in Nineteenth Century Danish Satire",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [10.5, 51.5], type: "Point" },
+          properties: {
+            Affiliation: "Academy of Sciences and Literature |\u00a0Mainz",
+            Affiliation_Country: "Germany",
+            Name: "Thomas Kollatz",
+            Submission_1_text:
+              "Read and See: Dual Approaches to Content Representation in the Digital Edition Buber-Korrespondenzen Digital",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "DHLab - KNAW Humanities Cluster",
+            Affiliation_Country: "Netherlands",
+            Name: "Marijn Koolen",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.8651882, 52.3340539], type: "Point" },
+          properties: {
+            Affiliation: "Vrije Universiteit Amsterdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Lea Krause",
+            Submission_1_text:
+              "Towards Polyvocal Metadata Collection for Colonial Collections: a Pilot Study in Kuching, Malaysia",
+            Submission_2_text:
+              "Exploring the Use of Generative AI for Polyvocal Historical Image Reconstructions",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.767707, 44.349243], type: "Point" },
+          properties: {
+            Affiliation:
+              "Mus\u00e9e national d\u0027arch\u00e9ologie, d\u0027histoire et d\u0027art",
+            Affiliation_Country: "France",
+            Name: "Edurne Kugeler",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.5, 50.75], type: "Point" },
+          properties: {
+            Affiliation:
+              "Aarhus University (but from 1 June University of Antwerp)",
+            Affiliation_Country: "Belgium",
+            Name: "Alie Lassche",
+            Submission_1_text:
+              "Corsaren: Multimodal Storytelling in Nineteenth Century Danish Satire",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.5, 50.75], type: "Point" },
+          properties: {
+            Affiliation: "LT3, Ghent University",
+            Affiliation_Country: "Belgium",
+            Name: "Els Lefever",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [13.3703, 52.5064], type: "Point" },
+          properties: {
+            Affiliation: "Staatsbibliothek zu Berlin - Berlin State Library",
+            Affiliation_Country: "Germany",
+            Name: "J\u00f6rg Lehmann",
+            Submission_1_text: "Telling the story of a dataset",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.3812357, 50.8134719], type: "Point" },
+          properties: {
+            Affiliation: "Universit\u00e9 libre de Bruxelles",
+            Affiliation_Country: "Belgium",
+            Name: "Anthony Leroy",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [35.21633, 31.76904], type: "Point" },
+          properties: {
+            Affiliation: "The Hebrew University of Jerusalem",
+            Affiliation_Country: "Israel",
+            Name: "Orly Lewis",
+            Submission_1_text:
+              "Digital Ancient Medicine: A Suite of Digital Platforms",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.89017, 52.3688], type: "Point" },
+          properties: {
+            Affiliation: "Rijksmuseum, University of Amsterdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Weixuan Li",
+            Submission_1_text:
+              "Visual storytelling with GIS: 3D perspective Analysis of in the View of Fuzhou",
+            Submission_2_text:
+              "Lost in digitalization? Using data as a source for quantitative art history",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [10.5, 51.5], type: "Point" },
+          properties: {
+            Affiliation: "Cologne Center for eHumanities",
+            Affiliation_Country: "Germany",
+            Name: "Benedikte L\u00f6bbert",
+            Submission_1_text:
+              "Presenting research in an engaging way: digital exhibitions as a sustainable publication format",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.5629863, 53.2194416], type: "Point" },
+          properties: {
+            Affiliation: "University of Groningen",
+            Affiliation_Country: "Netherlands",
+            Name: "Ruhi Mahadeshwar",
+            Submission_1_text:
+              "Evaluating the Impact of Source Diversity for RAG in Historical Research",
+            Submission_2_text:
+              "Narratives of maritime risk: a Natural Language Processing approach to reassess ancient seafaring strategies in theMediterranean Sea",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "Netwerk Digitaal Erfgoed",
+            Affiliation_Country: "Netherlands",
+            Name: "Kanika Makhija",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [16.3606855, 48.2131278], type: "Point" },
+          properties: {
+            Affiliation: "University of Vienna",
+            Affiliation_Country: "Austria",
+            Name: "Mart Herman Gerrit Makkink",
+            Submission_1_text:
+              "Quill2Vec: A Tool for Vector Manipulation of Manuscripts",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.3954969, 50.8225504], type: "Point" },
+          properties: {
+            Affiliation: "Vrije Universiteit Brussel",
+            Affiliation_Country: "Belgium",
+            Name: "Yoshi Malaise",
+            Submission_1_text:
+              "Using transformer models to analyze orthographic variation in Late Modern Dutch witness depositions",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [35.244723, 31.7918555], type: "Point" },
+          properties: {
+            Affiliation: "Hebrew University of Jerusalem",
+            Affiliation_Country: "Israel",
+            Name: "Gideon Manelis",
+            Submission_1_text:
+              "Digital Echoes: Narrating Galen\u2019s Theory of Voice in a Digital Interface",
+            Submission_2_text:
+              "Digital Ancient Medicine: A Suite of Digital Platforms",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.7168444, 50.8351542], type: "Point" },
+          properties: {
+            Affiliation: "Maastricht university library",
+            Affiliation_Country: "Netherlands",
+            Name: "Maryam Mazaheri",
+            Submission_1_text:
+              "Open Topstukken: Infrastructured Storytelling with Linked Data for Cross-Institutional Heritage Narratives",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.8634329, 51.8215173], type: "Point" },
+          properties: {
+            Affiliation: "Radboud University Nijmegen",
+            Affiliation_Country: "Netherlands",
+            Name: "Sven Meeder",
+            Submission_1_text:
+              '"Blessed are the Poor": Modelling Christian Values in Early Medieval Canon Law (400-1100)',
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "KNAW Humanities Cluster",
+            Affiliation_Country: "Netherlands",
+            Name: "Liliana Melgar",
+            Submission_1_text:
+              "Controlled vocabularies as building blocks of humanities and social science research",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.9487155, 49.5036259], type: "Point" },
+          properties: {
+            Affiliation: "University of Luxembourg",
+            Affiliation_Country: "Luxembourg",
+            Name: "Caio Mello",
+            Submission_1_text:
+              "Impresso Datalab: Embedding Newspapers and Radio archives for multimodal and multilingual data analysis",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.5, 50.75], type: "Point" },
+          properties: {
+            Affiliation: "UGent \u0026 KBR (Royal Library of Belgium)",
+            Affiliation_Country: "Belgium",
+            Name: "Fien Messens",
+            Submission_1_text:
+              "Tracing Connections: The Ego-Network of the Painter Fran\u00e7ois-Joseph Navez",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "KNAW Humanities Cluster DHLab",
+            Affiliation_Country: "Netherlands",
+            Name: "Pedro Henrique Mette Tauil",
+            Submission_1_text:
+              "Segmentation and Linking of Seventeenth-Century States-General Correspondence",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.8898042, 52.3681334], type: "Point" },
+          properties: {
+            Affiliation: "University of Amsterdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Anna Mihlic",
+            Submission_1_text:
+              "A cross-cultural computational analysis of the linguistic description of witches in children\u2019s literature",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.9487155, 49.5036259], type: "Point" },
+          properties: {
+            Affiliation: "University of Luxembourg",
+            Affiliation_Country: "Luxembourg",
+            Name: "Kirill Mitsurov",
+            Submission_1_text:
+              "A renaissance of 3D for Cultural Heritage: scrolly-telling websites with our 3D Stories Framework",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [7.10425, 44.46006], type: "Point" },
+          properties: {
+            Affiliation:
+              "Scuola Normale Superiore (SNS) \u00c9cole nationale des chartes (PSL)",
+            Affiliation_Country: "Italy",
+            Name: "Valentina MODOLO",
+            Submission_1_text:
+              "Quantitative Stemmatology and Open Recensio: A Test Case on the Bible historiale\u2019s Book of Exodus",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [10.1798014, 54.3324179], type: "Point" },
+          properties: {
+            Affiliation: "Kiel University",
+            Affiliation_Country: "Germany",
+            Name: "Asja Mueller",
+            Submission_1_text:
+              "The Koan Asklepieion \u2013 An Alternative Story: Approaching Healing Rituals by Serious Gaming",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.8634329, 51.8215173], type: "Point" },
+          properties: {
+            Affiliation: "Radboud Universiteit",
+            Affiliation_Country: "Netherlands",
+            Name: "Julia Neugarten",
+            Submission_1_text:
+              "Workshop: Problems and Prospects of Computational Fanfiction Research",
+            Submission_2_text:
+              "Blood and gore: The prevalence of violence in fanfiction across gender categories and engagement",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [10.5, 51.5], type: "Point" },
+          properties: {
+            Affiliation: "TU Darmstadt / UCL",
+            Affiliation_Country: "Germany",
+            Name: "Julianne Nyhan",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.13, 49.61167], type: "Point" },
+          properties: {
+            Affiliation:
+              "Luxembourg Centre for Contemporary and Digital History (C\u00b2DH)",
+            Affiliation_Country: "Luxembourg",
+            Name: "Sarah Oberbichler",
+            Submission_1_text: "Telling the story of a dataset",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "DHLab KNAW",
+            Affiliation_Country: "Netherlands",
+            Name: "Teresa Paccosi",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.5, 50.75], type: "Point" },
+          properties: {
+            Affiliation:
+              "Justice Visions. Human Rights Centre. Ghent Univeristy",
+            Affiliation_Country: "Belgium",
+            Name: "Cira Palli-Aspero",
+            Submission_1_text:
+              "The Case of RedressHub: An LLM-Assisted Pipeline for Mapping Colonial Redress Initiatives in Belgium",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.56667, 53.21917], type: "Point" },
+          properties: {
+            Affiliation: "CLCG, University of Groningen",
+            Affiliation_Country: "Netherlands",
+            Name: "Franziska Pannach",
+            Submission_1_text:
+              "Still no sign of the unnamed priestess? Assessing Narrative Understanding with the FolkLURE Benchmark for theNarrative Domain",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.6859518, 50.8472117], type: "Point" },
+          properties: {
+            Affiliation: "Maastricht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Costas Papadopoulos",
+            Submission_1_text:
+              "Dynamic3D: Interactive Narratives through 3D Simulation and Analysis",
+            Submission_2_text:
+              "Critical Making: Telling Stories through World-Building in Digital Humanities Pedagogy",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.3937627, 50.8245895], type: "Point" },
+          properties: {
+            Affiliation: "VUB",
+            Affiliation_Country: "Belgium",
+            Name: "Demetrios Paraschos",
+            Submission_1_text:
+              "The Stories it Tells: VERITRACE\u2019s Interactive Metadata Explorer and New Narratives in the Reception of AncientWisdom",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [-0.0900021, 51.5030855], type: "Point" },
+          properties: {
+            Affiliation: "King\u0027s College London",
+            Affiliation_Country: "United Kingdom",
+            Name: "Isaac Parkinson",
+            Submission_1_text:
+              "The Autoptic Image: Digital Forensics as a Visual Post-Mortem",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [3.2915374, 50.8057129], type: "Point" },
+          properties: {
+            Affiliation: "KU Leuven",
+            Affiliation_Country: "Belgium",
+            Name: "Ruben Peeters",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.8509157, 52.2433268], type: "Point" },
+          properties: {
+            Affiliation: "University of Twente",
+            Affiliation_Country: "Netherlands",
+            Name: "Sebastiaan Peeters",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.1801005, 52.0870179], type: "Point" },
+          properties: {
+            Affiliation: "Utrecht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Francisca Pessanha",
+            Submission_1_text:
+              "Emotion Through Breath in the ACT UP Oral History Project",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.88969, 52.37403], type: "Point" },
+          properties: {
+            Affiliation: "DHLab Amsterdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Andrea Peverelli",
+            Submission_1_text:
+              "Tracing Semantic Narratives of Gratia and Fides in Neo-Latin Poetry Digital Storytelling Across ConfessionalDivides",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.3812357, 50.8134719], type: "Point" },
+          properties: {
+            Affiliation: "Universit\u00e9 libre de Bruxelles",
+            Affiliation_Country: "Belgium",
+            Name: "Marie Philippe",
+            Submission_1_text:
+              "Mining Vitae : studying hagiographical topoi on a global scale with computational methods",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.5629863, 53.2194416], type: "Point" },
+          properties: {
+            Affiliation: "University of Groningen",
+            Affiliation_Country: "Netherlands",
+            Name: "Federico Pianzola",
+            Submission_1_text:
+              "The [ANON] Annotated Corpus for Computational Literary\r\nStudies",
+            Submission_2_text: "Narrative Flow on the Infinite Canvas",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.5809499, 46.5225695], type: "Point" },
+          properties: {
+            Affiliation: "University of Lausanne",
+            Affiliation_Country: "Switzerland",
+            Name: "Michael Piotrowski",
+            Submission_1_text:
+              "Arguing with Corpora: The Epistemic Status of Corpora in Computational Humanities",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [-98.5, 39.76], type: "Point" },
+          properties: {
+            Affiliation: "Digital Humanities Craft OG",
+            Affiliation_Country: "United States",
+            Name: "Christopher Pollin",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.1801005, 52.0870179], type: "Point" },
+          properties: {
+            Affiliation: "Utrecht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Sander Prins",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.13, 49.61167], type: "Point" },
+          properties: {
+            Affiliation: "ULB",
+            Affiliation_Country: "Luxembourg",
+            Name: "Guillaume Quintin",
+            Submission_1_text:
+              "Computational Modeling of Diachronic Variation in Late and Medieval Latin",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [-1.6146802, 54.9801751], type: "Point" },
+          properties: {
+            Affiliation: "Newcastle University",
+            Affiliation_Country: "United Kingdom",
+            Name: "Muqades Raja",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.5809499, 46.5225695], type: "Point" },
+          properties: {
+            Affiliation: "University of Lausanne",
+            Affiliation_Country: "Switzerland",
+            Name: "Tonia Ramogida",
+            Submission_1_text:
+              "Arguing with Corpora: The Epistemic Status of Corpora in Computational Humanities",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [10.50705, 43.84823], type: "Point" },
+          properties: {
+            Affiliation: "IMT School for Advanced Studies Lucca",
+            Affiliation_Country: "Italy",
+            Name: "Manuela Ritondale",
+            Submission_1_text:
+              "Narratives of maritime risk: a Natural Language Processing approach to reassess ancient seafaring strategies in theMediterranean Sea",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [3.7108831, 51.0078485], type: "Point" },
+          properties: {
+            Affiliation: "Ghent University",
+            Affiliation_Country: "Belgium",
+            Name: "Amanda Robin",
+            Submission_1_text:
+              "From vellum to virtual: manuscripts keep telling stories",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.4597028, 52.1686355], type: "Point" },
+          properties: {
+            Affiliation: "Leiden University",
+            Affiliation_Country: "Netherlands",
+            Name: "Elizabeth Rodr\u00edguez Estrada",
+            Submission_1_text:
+              "Demonstration: Digital tools for large-scale provenance research in museum databases",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.8509157, 52.2433268], type: "Point" },
+          properties: {
+            Affiliation: "UTwente",
+            Affiliation_Country: "Netherlands",
+            Name: "C. Annemieke Romein",
+            Submission_1_text:
+              "Unlocking Provincial Voices: How ML/AI Enables New Narratives of Citizenship in the Early Modern DutchRepublic. The Case of Overijssel\u2019s Resolutions (1578-1795).",
+            Submission_2_text:
+              "HAICu\u2019s Innovation Labs: Bridging Technology and Heritage through Collaborative Problem-Solving",
+            Submission_3_text:
+              '"As Open as Possible, as Closed as Necessary": Balancing Openness, Sustainability, and Data Protection inCooperative AI Infrastructure',
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [10.41409, 53.2509], type: "Point" },
+          properties: {
+            Affiliation: "Leuphana University of L\u00fcneburg",
+            Affiliation_Country: "Germany",
+            Name: "B\u00e1rbara Romero Ferr\u00f3n",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.1801005, 52.0870179], type: "Point" },
+          properties: {
+            Affiliation: "Utrecht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Ruben Ros",
+            Submission_1_text:
+              "Modelling Crisis at Scale: Text Mining the Crisification of Events in Western Societies, 1800-2025",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.3275274, 52.0815311], type: "Point" },
+          properties: {
+            Affiliation: "Koninklijke Bibliotheek Den Haag",
+            Affiliation_Country: "Netherlands",
+            Name: "Celonie Rozema",
+            Submission_1_text:
+              "Tapestries in Cultural Heritage Research and Collections",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.4597028, 52.1686355], type: "Point" },
+          properties: {
+            Affiliation: "Leiden University",
+            Affiliation_Country: "Netherlands",
+            Name: "Yann Ryan",
+            Submission_1_text:
+              "Using Large Language Models to understand \u2018the masses\u2019 in nineteenth-century Dutch newspapers",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.1801005, 52.0870179], type: "Point" },
+          properties: {
+            Affiliation: "Utrecht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Ortal-Paz SAAR",
+            Submission_1_text: "Untold Stories: The Text that Wasn\u2019t Text",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.9487155, 49.5036259], type: "Point" },
+          properties: {
+            Affiliation: "University of Luxembourg",
+            Affiliation_Country: "Luxembourg",
+            Name: "Marion SALA\u00dcN",
+            Submission_1_text:
+              "From reproducibility to re-enactment, a new life for scientific Articles",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.12222, 52.09083], type: "Point" },
+          properties: {
+            Affiliation: "ICON, University of Utrecht",
+            Affiliation_Country: "Netherlands",
+            Name: "Jeroen Salman",
+            Submission_1_text:
+              "A virtual research environment for collaborative querying, collecting and annotating works of European popular print",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [22.9591469, 40.6296719], type: "Point" },
+          properties: {
+            Affiliation: "Aristotle University of Thessaloniki",
+            Affiliation_Country: "Greece",
+            Name: "Panagiota Sarischouli",
+            Submission_1_text:
+              "Words that are Not Words: Digital Approaches to Magical Language and Iconography in Antiquity",
+            Submission_2_text: "Untold Stories: The Text that Wasn\u2019t Text",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.3739604, 51.9988274], type: "Point" },
+          properties: {
+            Affiliation: "TU Delft",
+            Affiliation_Country: "Netherlands",
+            Name: "Yuka Satori",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.4579464, 52.1684452], type: "Point" },
+          properties: {
+            Affiliation: "Huygens",
+            Affiliation_Country: "Netherlands",
+            Name: "Jona Schlegel",
+            Submission_1_text:
+              "Storytellers by Design: Critical Approaches to Curating Research-Driven Digital Experiences Using Design Methods",
+            Submission_2_text:
+              "Linking Surinamese Heritage Data: Building a Community-Focused Platform",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [12.0962683, 49.0030835], type: "Point" },
+          properties: {
+            Affiliation: "University of Regensburg",
+            Affiliation_Country: "Germany",
+            Name: "Thomas Schmidt",
+            Submission_1_text:
+              "Sexual Abuse in the Catholic Church: Annotation and Machine Learning of Hidden Patterns in Abuse Reports",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.8634329, 51.8215173], type: "Point" },
+          properties: {
+            Affiliation: "Radboud University",
+            Affiliation_Country: "Netherlands",
+            Name: "Gleb Schmidt",
+            Submission_1_text:
+              '"Blessed are the Poor": Modelling Christian Values in Early Medieval Canon Law (400-1100)',
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.8898042, 52.3681334], type: "Point" },
+          properties: {
+            Affiliation: "Universiteit van Amsterdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Kiete Schmitt",
+            Submission_1_text:
+              "The playlist pipeline: Reconstructing the historical music programming of the Indonesian programme of RadioNetherlands Wereldomroep",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.9569812, 52.3566998], type: "Point" },
+          properties: {
+            Affiliation: "NL eScience Center",
+            Affiliation_Country: "Netherlands",
+            Name: "Carsten Schnober",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [10.5, 51.5], type: "Point" },
+          properties: {
+            Affiliation: "DARIAH",
+            Affiliation_Country: "Germany",
+            Name: "Susan Schreibman",
+            Submission_1_text:
+              "Dynamic3D: Interactive Narratives through 3D Simulation and Analysis",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "StrixIT / StoryScript",
+            Affiliation_Country: "Netherlands",
+            Name: "Rutger Schurgers",
+            Submission_1_text: "Academic storystelling with enriched hypertext",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.3812357, 50.8134719], type: "Point" },
+          properties: {
+            Affiliation: "Universit\u00e9 Libre de Bruxelles",
+            Affiliation_Country: "Belgium",
+            Name: "Marie Serisier",
+            Submission_1_text:
+              "Divide and conquer : assessing thematic influence in gender-focused communities on Reddit.",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [16.5772569, 49.1934783], type: "Point" },
+          properties: {
+            Affiliation: "Masaryk University",
+            Affiliation_Country: "Czech Republic",
+            Name: "Robert L. J. Shaw",
+            Submission_1_text:
+              "Narratives of religious dissidence in medieval inquisition records: computing the representation and sequencing ofcrimes in Peter Seila\u0027s register of sentences (1241\u20132)",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.8898042, 52.3681334], type: "Point" },
+          properties: {
+            Affiliation: "University of Amsterdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Annabel Simons",
+            Submission_1_text:
+              "The playlist pipeline: Reconstructing the historical music programming of the Indonesian programme of RadioNetherlands Wereldomroep",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.6859518, 50.8472117], type: "Point" },
+          properties: {
+            Affiliation: "Maastricht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Jaime Simons",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [22.0, 39.0], type: "Point" },
+          properties: {
+            Affiliation: 'MUSEOLOGIST- CURATOR  "ESTIA NEAS SMYRNIS"',
+            Affiliation_Country: "Greece",
+            Name: "GEORGIA SIVRI",
+            Submission_1_text:
+              "From Memory to Multimodal Storytelling: Digitally Narrating Asia Minor Urban Culture at ESTIA Neas Smyrnis",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "KB National Library of the Netherlands",
+            Affiliation_Country: "Netherlands",
+            Name: "James Smith",
+            Submission_1_text:
+              "Tapestries in Cultural Heritage Research and Collections",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [11.2829889, 43.802566], type: "Point" },
+          properties: {
+            Affiliation: "European University Institute",
+            Affiliation_Country: "Italy",
+            Name: "Aliesia Soloviova",
+            Submission_1_text:
+              "Designing Non-Linear Narrative Infrastructures for Global History: A Methodological Framework for Map-BasedStorytelling",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.4597028, 52.1686355], type: "Point" },
+          properties: {
+            Affiliation: "leiden university",
+            Affiliation_Country: "Netherlands",
+            Name: "Gabriel Spautz Vieira",
+            Submission_1_text:
+              "Demonstration: Digital tools for large-scale provenance research in museum databases",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.1801005, 52.0870179], type: "Point" },
+          properties: {
+            Affiliation: "Utrecht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Sheean Spoel",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.1801005, 52.0870179], type: "Point" },
+          properties: {
+            Affiliation: "Utrecht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Edo Storm",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [16.5772569, 49.1934783], type: "Point" },
+          properties: {
+            Affiliation: "Masaryk University, Brno",
+            Affiliation_Country: "Czech Republic",
+            Name: "Katalin Suba",
+            Submission_1_text:
+              "Sequential variation in inquisitorial ritual narratives: a computational analysis of the consolament accounts inRegister FFF",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [10.5, 51.5], type: "Point" },
+          properties: {
+            Affiliation: "Shkyera Inc",
+            Affiliation_Country: "Germany",
+            Name: "Franciszek Szewczyk",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [13.3929202, 52.5183402], type: "Point" },
+          properties: {
+            Affiliation: "Humboldt-Universit\u00e4t zu Berlin",
+            Affiliation_Country: "Germany",
+            Name: "Louise Tharandt",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.4199387, 51.1843856], type: "Point" },
+          properties: {
+            Affiliation: "University of Antwerp",
+            Affiliation_Country: "Belgium",
+            Name: "Febe Thonissen",
+            Submission_1_text:
+              "Detecting floating stanzas in premodern Dutch songs",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.9569812, 52.3566998], type: "Point" },
+          properties: {
+            Affiliation: "Netherlands eScience Center",
+            Affiliation_Country: "Netherlands",
+            Name: "Erik Tjong Kim Sang",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [35.244723, 31.7918555], type: "Point" },
+          properties: {
+            Affiliation: "Hebrew University of Jerusalem",
+            Affiliation_Country: "Israel",
+            Name: "Gabriele Torcoletti",
+            Submission_1_text:
+              "Feeling the Ancient Pulse: An AI-Assisted Interactive Platform for Experiencing Galenic Pulse Theory",
+            Submission_2_text:
+              "Digital Ancient Medicine: A Suite of Digital Platforms",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.8651882, 52.3340539], type: "Point" },
+          properties: {
+            Affiliation: "VU Amsterdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Andre Valdestilhas",
+            Submission_1_text:
+              "Controlled vocabularies as building blocks of humanities and social science research",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.1801005, 52.0870179], type: "Point" },
+          properties: {
+            Affiliation: "Utrecht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Jelte van Boheemen",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.13, 49.61167], type: "Point" },
+          properties: {
+            Affiliation: "Historical Consulting (Luxembourg)",
+            Affiliation_Country: "Luxembourg",
+            Name: "Marie van Boxel",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "Huygens Institute \u0026 UvA",
+            Affiliation_Country: "Netherlands",
+            Name: "Karina van Dalen-Oskam",
+            Submission_1_text:
+              "Stylistic Influences in Anne Frank\u2019s Writings",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.1231525, 52.0906639], type: "Point" },
+          properties: {
+            Affiliation: "Universiteit Utrecht",
+            Affiliation_Country: "Netherlands",
+            Name: "Arjan van Dalfsen",
+            Submission_1_text:
+              "Functional Diversity as a Metric for Animal Diversity in Early Modern Dutch Texts: First Insights",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.89017, 52.3688], type: "Point" },
+          properties: {
+            Affiliation: "Huygens Institute/University of Amsterdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Charles van den Heuvel",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.5629863, 53.2194416], type: "Point" },
+          properties: {
+            Affiliation: "University of Groningen",
+            Affiliation_Country: "Netherlands",
+            Name: "Lucas van der Deijl",
+            Submission_1_text:
+              "Detecting multilingualism in early modern drama",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "Open University of the Netherlands",
+            Affiliation_Country: "Netherlands",
+            Name: "Tim van der Heijden",
+            Submission_1_text:
+              "Towards a digital experimental media archaeology",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.1801005, 52.0870179], type: "Point" },
+          properties: {
+            Affiliation: "Utrecht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Luka van der Plas",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.9487155, 49.5036259], type: "Point" },
+          properties: {
+            Affiliation: "University of Luxembourg",
+            Affiliation_Country: "Luxembourg",
+            Name: "Joella van Donkersgoed",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "Huygens Institute (KNAW)",
+            Affiliation_Country: "Netherlands",
+            Name: "Marijke van Faassen",
+            Submission_1_text: "Telling the story of a dataset",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.47762, 51.02574], type: "Point" },
+          properties: {
+            Affiliation:
+              "Ghent Centre for Digital Humanities \u0026 Stadsarchief Mechelen",
+            Affiliation_Country: "Belgium",
+            Name: "Sytze Van Herck",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "Centre for Digital Humanities, Utrecht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Andr\u00e9 van Kooij",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.1801005, 52.0870179], type: "Point" },
+          properties: {
+            Affiliation: "Utrecht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Meesq van Stiphout",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.5, 50.75], type: "Point" },
+          properties: {
+            Affiliation: "Universiteit Antwerpen / FWO",
+            Affiliation_Country: "Belgium",
+            Name: "Caroline Vandyck",
+            Submission_1_text:
+              "The Hand of Antwerp: A Dataset of Middle Dutch Deeds (1300-1355) connected to Jan van Boendale",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.9487155, 49.5036259], type: "Point" },
+          properties: {
+            Affiliation: "University of Luxembourg",
+            Affiliation_Country: "Luxembourg",
+            Name: "Demival Vasques Filho",
+            Submission_1_text:
+              "Forgeries and Networks (ForNet). The Mittheilungen des Museen-Verbandes and forgery networks in the 20th century",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.5, 50.75], type: "Point" },
+          properties: {
+            Affiliation: "Ghent Centre for Digital Humanities - UGent",
+            Affiliation_Country: "Belgium",
+            Name: "Bas Vercruysse",
+            Submission_1_text: "Narrating Belgian Business History",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "University of Antwerp \u0026 University of Amtserdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Loren Verreyen",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "Utrecht University Centre for Digital Humanities",
+            Affiliation_Country: "Netherlands",
+            Name: "Xander Vertegaal",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.6859518, 50.8472117], type: "Point" },
+          properties: {
+            Affiliation: "Maastricht University",
+            Affiliation_Country: "Netherlands",
+            Name: "Anna Villarica",
+            Submission_1_text:
+              "Critical Making: Telling Stories through World-Building in Digital Humanities Pedagogy",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.8651882, 52.3340539], type: "Point" },
+          properties: {
+            Affiliation: "Vrije Universiteit Amsterdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Lorella Viola",
+            Submission_1_text:
+              "Not One Polyvocality but Many: Digital Heritage Across Unequal Histories",
+            Submission_2_text:
+              "Workforce Imbalance and Structural Decline: A Data-Driven Analysis of the Dutch East India Company (1700-1780)",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.8651882, 52.3340539], type: "Point" },
+          properties: {
+            Affiliation: "Vrije Universiteit Amsterdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Lorella Viola",
+            Submission_1_text:
+              "Not One Polyvocality but Many: Digital Heritage Across Unequal Histories",
+            Submission_2_text:
+              "Workforce Imbalance and Structural Decline: A Data-Driven Analysis of the Dutch East India Company (1700-1780)",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.8634329, 51.8215173], type: "Point" },
+          properties: {
+            Affiliation: "Radboud University, Nijmegen",
+            Affiliation_Country: "Netherlands",
+            Name: "Friederike Voit",
+            Submission_1_text:
+              '"Blessed are the Poor": Modelling Christian Values in Early Medieval Canon Law (400-1100)',
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.8509157, 52.2433268], type: "Point" },
+          properties: {
+            Affiliation: "University of Twente",
+            Affiliation_Country: "Netherlands",
+            Name: "Andreas Weber",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.8898042, 52.3681334], type: "Point" },
+          properties: {
+            Affiliation: "University of Amsterdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Melvin Wevers",
+            Submission_1_text:
+              "The playlist pipeline: Reconstructing the historical music programming of the Indonesian programme of RadioNetherlands Wereldomroep",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "Huygens Institute for Dutch History and Culture",
+            Affiliation_Country: "Netherlands",
+            Name: "Mari Wigham",
+            Submission_1_text: "Telling the story of a dataset",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.8898042, 52.3681334], type: "Point" },
+          properties: {
+            Affiliation: "University of Amsterdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Martje Wijers",
+            Submission_1_text:
+              "Creativity across Germanic languages: Entropy and surprise in the translation of Nordic Noir",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.8850395, 52.3598431], type: "Point" },
+          properties: {
+            Affiliation: "Rijksmuseum",
+            Affiliation_Country: "Netherlands",
+            Name: "Coen Wilders",
+            Submission_1_text:
+              "Catalogues-as-data: practice, principles, and prospects",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.8651882, 52.3340539], type: "Point" },
+          properties: {
+            Affiliation: "Vrije Universiteit Amsterdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Ravini Wimalasuriya",
+            Submission_1_text:
+              "Exploring the Use of Generative AI for Polyvocal Historical Image Reconstructions",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [10.5, 51.5], type: "Point" },
+          properties: {
+            Affiliation: "Leibniz Institute of European History",
+            Affiliation_Country: "Germany",
+            Name: "Thorsten W\u00fcbbena",
+            Submission_1_text:
+              "Carbonite Coffin for ConedaKOR: A database software with a built-in self-degradable static mode as a sustainableDigital Humanities research infrastructure",
+            Submission_2_text:
+              "Lost in digitalization? Using data as a source for quantitative art history",
+            Submission_3_text:
+              "Forgeries and Networks (ForNet). The Mittheilungen des Museen-Verbandes and forgery networks in the 20th century",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.5629863, 53.2194416], type: "Point" },
+          properties: {
+            Affiliation: "University of Groningen",
+            Affiliation_Country: "Netherlands",
+            Name: "Xiaoyan Yang",
+            Submission_1_text:
+              "Workshop: Problems and Prospects of Computational Fanfiction Research",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.13, 49.61167], type: "Point" },
+          properties: {
+            Affiliation:
+              "Centre for Contemporary and Digital\u00a0History (C\u00b2DH), University of\u00a0Luxemburg",
+            Affiliation_Country: "Luxembourg",
+            Name: "Gerben Zaagsma",
+            Submission_1_text: "Silencing History Online",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [5.75, 52.25], type: "Point" },
+          properties: {
+            Affiliation: "Ivo Zandhuis Research \u0026 Consultancy / IISH",
+            Affiliation_Country: "Netherlands",
+            Name: "Ivo Zandhuis",
+            Submission_1_text: "",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [15.0, 49.75], type: "Point" },
+          properties: {
+            Affiliation:
+              "Masaryk University, Centre for the Digital Research of Religion",
+            Affiliation_Country: "Czech Republic",
+            Name: "David Zb\u00edral",
+            Submission_1_text:
+              "Using LLMs to uncover hidden patterns in the contestation of religious authorities across a corpus of medievalinquisition records, 1243\u20131522",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.8898042, 52.3681334], type: "Point" },
+          properties: {
+            Affiliation: "Universiteit van Amsterdam",
+            Affiliation_Country: "Netherlands",
+            Name: "Zomer Zeijlemaker",
+            Submission_1_text:
+              "The Amsterdam Protest Dataset: Linking Visual Archives for Future Research",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [4.95194, 52.35639], type: "Point" },
+          properties: {
+            Affiliation: "Centrum Wiskunde \u0026 Informatica (CWI)",
+            Affiliation_Country: "Netherlands",
+            Name: "Yahui Zhao",
+            Submission_1_text:
+              "Beyond Keywords: Identifying Colonial Perspectives in Controlled Vocabulary Descriptions Using Large LanguageModels \u2014 A Case Study of the Getty AAT",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+        {
+          geometry: { coordinates: [6.5629863, 53.2194416], type: "Point" },
+          properties: {
+            Affiliation: "University of Groningen",
+            Affiliation_Country: "Netherlands",
+            Name: "Xiaoyu Zhou",
+            Submission_1_text: "Narrative Flow on the Infinite Canvas",
+            Submission_2_text: "",
+            Submission_3_text: "",
+          },
+          type: "Feature",
+        },
+      ],
+      type: "FeatureCollection",
+    });
+    geo_json_4d00290282b60410ab90006c956b7f1a.setStyle(function (feature) {
+      return feature.properties.style;
+    });
+
+    geo_json_4d00290282b60410ab90006c956b7f1a.addTo(
+      map_cad7431c337c29068d28a2c60f72ac0f,
+    );
+  </script>
+</html>

@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DH Benelux Data Visualisations</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .oswald-accordion-header {
+        font-family: "Oswald", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 1.5rem;
+      }
+      .raleway-body {
+        font-family: "Raleway", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 350;
+        font-style: normal;
+      }
+      .accordion-button:not(.collapsed) {
+        background-color: greenyellow;
+      }
+      .accordion-button:focus {
+        box-shadow: none;
+      }
+    </style>
+  </head>
+  <body class="container">
+    <!-- Accordion Element-->
+    <div class="accordion" id="accordionParent">
+      <!-- ROW 1 - Countries: Which countries are the conference participants from? -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button
+            class="accordion-button collapsed oswald-accordion-header text-uppercase"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseOne"
+            aria-expanded="false"
+            aria-controls="collapseOne"
+          >
+            Which countries are the conference participants from?
+          </button>
+        </h2>
+        <div
+          id="collapseOne"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionParent"
+        >
+          <div class="accordion-body raleway-body">
+            Where do conference participants travel from to reach Maastricht? We
+            would also like to extend a warm welcome to our guests from outside
+            the Benelux region!<br />💡&nbsp;Click on the map to access
+            participant details.
+          </div>
+          <div class="accordion-body row">
+            <div class="row">
+              <div class="col-md" id="countries_lollipop"></div>
+              <div class="col-md" id="geomap">
+                <div>
+                  <img
+                    src="img/dhbenelux-geomap.png"
+                    class="img-fluid rounded"
+                    onclick="
+                      window.open(
+                        'html/20260528084926_dhbenelux2026-geomap.html',
+                        '_blank',
+                        'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=800,height=800,directories=no,status=no',
+                      );
+                      return false;
+                    "
+                  />
+                </div>
+                <div class="pt-2 d-flex justify-content-end raleway-body">
+                  <button
+                    type="button"
+                    class="btn btn-success"
+                    onclick="
+                      window.open(
+                        'html/20260528084926_dhbenelux2026-geomap.html',
+                        '_blank',
+                        'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=800,height=800,directories=no,status=no',
+                      );
+                      return false;
+                    "
+                  >
+                    Open the map
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 2 - Abstracts: word frequency and topic distribution -->
+      <div class="accordion-item">
+        <h2 class="accordion-header oswald-accordion-header">
+          <button
+            class="accordion-button collapsed oswald-accordion-header text-uppercase"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo"
+            aria-expanded="false"
+            aria-controls="collapseTwo"
+          >
+            Conference abstracts: word frequency and topic distribution
+          </button>
+        </h2>
+        <div
+          id="collapseTwo"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionParent"
+        >
+          <div class="accordion-body raleway-body">
+            Take a first look at the word frequency statistics from the
+            conference abstracts and see how digital humanities topics are
+            distributed across the conference papers.
+          </div>
+          <div class="accordion-body row">
+            <div class="col-md" id="words_lollipop"></div>
+            <div class="col-md" id="topics_bar">right</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 3 - Abstracts: research corpus time frame -->
+      <div class="accordion-item">
+        <h2 class="accordion-header oswald-accordion-header">
+          <button
+            class="accordion-button collapsed oswald-accordion-header text-uppercase"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseThree"
+            aria-expanded="false"
+            aria-controls="collapseThree"
+          >
+            Conference Abstracts: Time frame of research data
+          </button>
+        </h2>
+        <div
+          id="collapseThree"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionParent"
+        >
+          <div class="accordion-body raleway-body">
+            <i>Text</i>, <i>historical</i> and <i>narrative</i> are among the
+            ten most frequently occurring words in the conference abstracts. How
+            successful was an LLM in extracting the time frames related to the
+            research corpus data mentioned in the abstracts? See how historical
+            research papers at this conference span a timeframe of almost 3,000
+            years!<br />💡&nbsp;The timeline is plotted along the X-axis. To
+            access the research abstracts, simply hover over the time bars.
+          </div>
+          <div class="accordion-body row">
+            <div id="abstracts_timeframe"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 4 - Abstracts: network visualisation -->
+      <div class="accordion-item">
+        <h2 class="accordion-header oswald-accordion-header">
+          <button
+            class="accordion-button collapsed oswald-accordion-header text-uppercase"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseFour"
+            aria-expanded="false"
+            aria-controls="collapseFour"
+          >
+            Conference Abstracts: A network of topic-related research projects
+          </button>
+        </h2>
+        <div
+          id="collapseFour"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionParent"
+        >
+          <div class="accordion-body row">
+            <div class="row">
+              <div class="w-100"></div>
+              <div class="col-12 col-md-8 raleway-body">
+                How are topics and conference papers related? Traverse the
+                network graph to discover the connections between research
+                projects and DH topics, and uncover additional research projects
+                relevant to those topics.
+                <div class="pt-2 d-flex justify-content-end">
+                  <button
+                    type="button"
+                    class="btn btn-success"
+                    onclick="
+                      window.open(
+                        'html/20260531140411_dhbenelux2026-network.html',
+                        '_blank',
+                        'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=800,height=800,directories=no,status=no',
+                      );
+                      return false;
+                    "
+                  >
+                    Open the network graph
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-md-4" id="network-graph">
+                <div>
+                  <img
+                    src="img/dhbenelux-network-graph.png"
+                    class="img-fluid rounded"
+                    onclick="
+                      window.open(
+                        'html/20260531140411_dhbenelux2026-network.html',
+                        '_blank',
+                        'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=800,height=800,directories=no,status=no',
+                      );
+                      return false;
+                    "
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+      integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <script src="js/20260528100017_countries-lollipop-v6.js"></script>
+    <script src="js/20260528100017_words_lollipop-v6.js"></script>
+    <script src="js/20260528090546_topics-bar-v6.js"></script>
+    <script src="js/20260528144716_abstracts_timeframe.js"></script>
+  </body>
+</html>
